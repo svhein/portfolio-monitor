@@ -1,0 +1,12 @@
+
+.container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-style: solid;
+    border-color:rgb(247, 222, 2);
+  }
+
+#index{
+    font-size: 3rem;
+}

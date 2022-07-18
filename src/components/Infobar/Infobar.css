@@ -1,0 +1,15 @@
+.infoTable{
+    margin-top: 50px;
+
+}
+
+.infoTable > tr > td {
+  vertical-align: top;
+  color: white;
+  height: 20px;
+  vertical-align: baseline;
+  /* border: 1px solid red; */
+  text-transform: uppercase;
+  
+}
+

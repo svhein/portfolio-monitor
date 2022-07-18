@@ -1,0 +1,11 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    font-size: 5px;
+}
+
+.add_button_image{
+    width: 10px;
+    height: 75%;
+}

@@ -1,0 +1,54 @@
+
+.buy_form{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    position: relative;
+}
+
+.buy_form > label {
+    color: white;
+    margin-top: 7px;
+    float: right;
+    
+}
+
+input[id=date]{
+    width: 96px !important;
+}
+
+::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+select[id=price-currency]{
+    position: relative;
+    left: 130px;
+    border-radius: 3px;
+    background-color: rgb(1, 0, 17);
+    border: thin solid white;
+    color: white;
+}
+
+select[id=fee-currency]{
+    position: relative;
+    left: 132px;
+    border-radius: 3px;
+    background-color: rgb(1, 0, 17);
+    border: thin solid white;
+    color: white;
+}
+
+.buy_form > label > input{
+    background-color: rgb(1, 0, 17);
+    color: white;
+    border-radius: 3px;
+    border: thin solid white;
+    width: 60px;
+    /* overflow: auto; */
+    text-align: right;
+    position: absolute;
+    left: 100px;
+} 
+
+

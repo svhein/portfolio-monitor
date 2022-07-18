@@ -1,0 +1,55 @@
+table[id='active-trades']{
+    width: 300px;   
+}
+
+table[id='active-trades'] tbody{
+    display: block;
+    height: 300px;     
+    overflow-y: auto;    
+    overflow-x: hidden;  
+    scroll-behavior: smooth;
+    border-bottom: 1px solid red;   
+
+    /* mozilla scrollbar */
+    scrollbar-color: rgb(0, 14, 69) rgb(1, 0, 17);
+    scrollbar-width: thin;
+}
+
+table[id='active-trades'] th{
+    float: left;
+    height: auto;
+    display: block;
+}
+
+table[id='active-trades'] tr{
+    display: block;
+}
+
+table[id='active-trades'].tr:nth-child(even) {
+    background-color: rgb(12, 12, 37);
+  }
+
+
+/* SCROLLBAR WEBKIT */
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+  /* Track */
+::-webkit-scrollbar-track {
+    background: rgb(1, 0, 17);
+}
+  
+  /* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgb(1, 25, 40);
+}
+  
+  /* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(0, 25, 84);
+}
+
+

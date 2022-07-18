@@ -1,0 +1,41 @@
+.trade-wrapper{
+    display: flex;
+    flex-direction: column;
+    margin-top: 13px;
+    margin-left: 20px;
+    padding-left: 10px;
+    /* border: 1px solid green; */
+    
+}
+
+.trade-wrapper h1{
+    margin: 10px 15px 0px 5px; /* top/right/bottom/left */
+}
+
+
+.button-wrap > input{
+    visibility: hidden;
+    display:none;
+}
+
+input[type=radio]:checked + label{
+    background:rgb(8, 3, 77);
+}
+
+.button-wrap{
+    margin-top: 16px;
+}
+
+.button-wrap > label {
+    cursor: pointer;
+    text-align: center;
+    background-color: rgb(1, 0, 17);
+    color: white;
+    border: thin solid white;
+    padding: 5px;
+    margin: 15px 4px 0px 0px; 
+}
+
+
+
+
