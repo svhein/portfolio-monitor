@@ -1,6 +1,6 @@
-let arr = [1,2,3,[4,5, [6,7]]];
-console.log(arr);
+let obj = {};
 
-arr = arr.flat(Infinity);
+obj['test1'] = "1";
+obj['test2'] = "2"
 
-console.log(arr)
+console.log(obj)

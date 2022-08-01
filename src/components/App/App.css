@@ -34,13 +34,18 @@
 
 }
 
-.chart{
+.bottom-left{
   border-style: solid;
   border-width: thin;
   border-color: white;
   border-radius: 20px;
   background-color: rgb(1, 0, 17);
   grid-area: 4 / 4 / 5 / 5;
+}
+
+.bottom-left-container{
+  display: flex;
+  flex-direction: row;
 }
 
 

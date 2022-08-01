@@ -4,14 +4,15 @@ import './Ticker.css';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import CurrencyDropdown from '../CurrencyDropdown/CurrencyDropdown';
 
-import Yaticker from '../../utils/stockDataHandler'
-import proto from '../../YPricingData.proto';
+// import Yaticker from '../../utils/stockDataHandler'
+import proto from '../../utils/YPricingData.proto';
 import {connect}  from 'react-redux'
-// const protobuf = require("protobufjs");
 import protobuf from 'protobufjs'
-// const axios = require('axios');
 import axios from 'axios';
 import {Buffer} from 'buffer';
+import { Oval } from  'react-loader-spinner'
+
+
 
 class Ticker extends React.Component{
 
@@ -100,16 +101,23 @@ class Ticker extends React.Component{
 
     render(){
         let tickersList = this.props.tickersList;
+
+        const loadingSpinner = <Oval
+            height="15"
+            width="15"
+            color='white'
+            ariaLabel='loading'
+         />
       
         return(
             <tr>
                 <td>{this.props.name}</td>
                 <td style={{color: this.state.color}}>
-                     {this.state.ticker ? parseFloat(this.state.ticker.price).toFixed(2) : <LoadingSpinner/>}
+                     {this.state.ticker ? parseFloat(this.state.ticker.price).toFixed(2) : loadingSpinner}
                 </td>
                 <td> <CurrencyDropdown ticker={this.props.name} /> </td>
                 <td style={{color: this.state.color}}>
-                     {this.state.ticker ? this.state.ticker.changePercent.toFixed(2) + " %" : <LoadingSpinner/>} 
+                     {this.state.ticker ? this.state.ticker.changePercent.toFixed(2) + " %" : loadingSpinner} 
                 </td>
                 <td id='amount' contenteditable="true" onKeyUp={this.setAmount}>
                      {this.state.amount}

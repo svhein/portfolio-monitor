@@ -20,7 +20,7 @@ function setupSocket(ticker){
             console.log('connected');
             console.log(props.name);
             ws.send(JSON.stringify({
-                // subscribe: ['BTC-USD', 'ETH-USD']       //TODO
+                // subscribe: ['AAPL']       //TODO
                 subscribe: [ticker]
             }));
         };

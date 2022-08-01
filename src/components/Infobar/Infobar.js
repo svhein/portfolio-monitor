@@ -1,6 +1,8 @@
 
 import React from 'react'
-import Totalvalue from '../Totalvalue/Totalvalue';
+import { Totalvalue  } from '../Totalvalue/Totalvalue';
+import { PriceChangeToday, ChangePercentToday } from '../ChangeToday/ChangeToday'
+
 import "./Infobar.css"
 
 function Infobar(props) {
@@ -17,10 +19,18 @@ function Infobar(props) {
            </tr>
            <tr>
                <td>
-                   SECOND
+                   CHANGE TDY
                </td>
                <td>
-                   <Totalvalue />
+                   <PriceChangeToday />
+               </td>
+           </tr>
+           <tr>
+               <td>
+                   CHANGEPCT TDY
+               </td>
+               <td>
+                   {ChangePercentToday()}
                </td>
            </tr>
 

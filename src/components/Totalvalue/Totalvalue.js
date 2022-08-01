@@ -1,10 +1,9 @@
-import React, {useState, useEffect} from 'react';
-import { useSelector, connect } from 'react-redux'
-
+import React, {useState, useEffect, useMemo} from 'react';
+import { useSelector } from 'react-redux'
 
 import './Totalvalue.css'
 
-function Totalvalue(props){
+export function Totalvalue(props){
 
     const [textColor, setTextColor] = useState('white')
     const [latestValue, setLatestValue] = useState(0);
@@ -36,6 +35,17 @@ function Totalvalue(props){
     //totalValue = tickers.reduce((sum, next) => sum + next.price * next.amount, 0)
     
     return <h1 className='price' style={{color: textColor}}> {(totalValue.toFixed(2)).toLocaleString('fi-FI')} </h1>
+    // return totalValue.toFixed(2);
 }
 
-export default Totalvalue;
+
+export function GetTotalValue(){
+
+    const storeData = useSelector(store => store.tickers)    
+    const totalValue = useMemo(() => {
+        const reducer = (prev, next) => prev + next.price * next.amount;
+        let value = storeData.reduce(reducer, 0); 
+    }, [storeData] )
+
+    return totalValue;
+}
