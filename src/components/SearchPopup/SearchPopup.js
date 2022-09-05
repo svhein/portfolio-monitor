@@ -16,8 +16,6 @@ function SearchPopup(props){
       console.log(searchResults)
   }
 
-  
-
     return(  
         <Popup
         trigger={<button id="add_button"> Add </button>}

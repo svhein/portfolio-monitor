@@ -30,7 +30,7 @@ function Infobar(props) {
                    CHANGEPCT TDY
                </td>
                <td>
-                   {ChangePercentToday()}
+                   {ChangePercentToday()} %
                </td>
            </tr>
 

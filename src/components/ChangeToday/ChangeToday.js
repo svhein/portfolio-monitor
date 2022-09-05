@@ -35,14 +35,20 @@ export function PortfolioOpeningPrice(){
 
 export function ChangePercentToday(){
     
-    let totalValue = GetTotalValue();
-    let changePriceToday = PriceChangeToday();
+    let totalValue = parseFloat(GetTotalValue()).toFixed(2);
+    let changePriceToday = parseFloat(PriceChangeToday()).toFixed(2);
 
-    let openingPrice = parseFloat(totalValue) - parseFloat(changePriceToday);
+    console.log('changePercent')
+    console.log(totalValue);
+    console.log(changePriceToday)
 
-    let changePercent = totalValue / openingPrice;
+    let openingPrice = totalValue - changePriceToday;
 
-    return parseFloat(changePercent);
+    console.log('opening price' + openingPrice)
+
+    let changePercent = ((totalValue / openingPrice) -1) * 100 ;
+
+    return (changePercent.toFixed(2));
 }
 
 

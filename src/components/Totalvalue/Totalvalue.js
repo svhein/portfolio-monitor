@@ -44,8 +44,9 @@ export function GetTotalValue(){
     const storeData = useSelector(store => store.tickers)    
     const totalValue = useMemo(() => {
         const reducer = (prev, next) => prev + next.price * next.amount;
-        let value = storeData.reduce(reducer, 0); 
+        return storeData.reduce(reducer, 0); 
     }, [storeData] )
 
-    return totalValue;
+    return totalValue
+
 }
