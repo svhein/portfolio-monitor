@@ -5,6 +5,10 @@ import { PriceChangeToday, ChangePercentToday } from '../ChangeToday/ChangeToday
 
 import "./Infobar.css"
 
+// uuteen layouttiin:
+// %-osuudet horisontaalisena palkkina
+// day low-high kynttil' vertikaaliseen
+
 function Infobar(props) {
   return (
     <div>
@@ -33,11 +37,8 @@ function Infobar(props) {
                    {ChangePercentToday()} %
                </td>
            </tr>
-
        </table>
     </div>
   )
 }
-
-
 export default Infobar

@@ -26,7 +26,7 @@ function BuyForm(props) {
       <label>Price
         <input type='text' onChange={(e) => setPrice(parseFloat(e.target.value))}/> 
         <select id='price-currency'>
-          <option value='euro'>€</option>
+          <option value='eur'>€</option>
           <option value='usd'>$</option>
         </select>
       </label>
@@ -39,7 +39,7 @@ function BuyForm(props) {
       <label>Fees
         <input type='text' onChange={(e) => setFees(parseFloat(e.target.value))}/> 
         <select id='fee-currency'>
-          <option value='euro'>€</option>
+          <option value='eur'>€</option>
           <option value='usd'>$</option>
         </select>
       </label>

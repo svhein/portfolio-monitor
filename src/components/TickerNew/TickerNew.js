@@ -12,7 +12,7 @@ function TickerNew(props){
 
     const [price, setPrice] = useState(100)
     const [amount, setAmount] = useState(1);
-    const [currency, setCurrency]  = useState('');
+    const [currency, setCurrency]  = useState('usd');
     const [changePercent, setChangePercent] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
     const [percentColor, setPercentColor] = useState('white');
@@ -74,10 +74,12 @@ function TickerNew(props){
         })
     }, [])
 
+
     useEffect(() => {
         changePercent > 0 ? setPercentColor('green') : setPercentColor('red');
     }, [changePercent])
 
+    // blink when price changes
     function flashColor(priceDifference){
         if (priceDifference > 0.1 || priceDifference < -0.1 ){
             let color = priceDifference >= 0 ? "green" : "red"; 
@@ -101,8 +103,7 @@ function TickerNew(props){
             <td>    {props.name}   </td>
 
             {/* PRICE */}
-            <td style={{color: priceColor}}>    {price}    </td>
-
+            <td style={{color: priceColor}}> {price} </td>
 
             {/* CURRENCY */}
             <td>    <CurrencyDropdown ticker={props.name} />   </td>
@@ -117,7 +118,8 @@ function TickerNew(props){
 
             {/* TOTAL VALUE   */}
             <td> 
-                {( amount * price).toFixed(2) } 
+                {/* {( amount * price).toFixed(2) }  */}
+                {Intl.NumberFormat('fi-FI', { style: 'currency', currency: currency}).format(price*amount) } 
             </td>
             
             {/* REMOVE BUTTON */}
