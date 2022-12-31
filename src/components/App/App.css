@@ -1,13 +1,36 @@
 
+.background{
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  background-color: rgb(1, 0, 17);
+}
+
+.bottom{
+  display:flex;
+  width: 100%;
+  /* flex: 1; */
+  flex-direction: row;
+}
+
+/* 
+.appContainer{
+  margin: auto;
+  background-color: rgb(1, 0, 17);
+} 
+
 .grid{
   display: grid;
-  grid-template-columns: 1% 1fr 1% 1fr 1%;;
+  grid-template-columns: 1% 1fr 1% 1fr 1%;
   grid-template-rows: 1% 1fr 1% 1fr 1%;
-  grid-gap: 5px 5px;
-  width: 100vw;
+
+  width: auto;w
   height: 100vh;
+  min-height: 0;  
+  min-width: 0;  
   font-family: "Electrolize";
   background-color: rgb(1, 0, 17);
+  margin:auto;
 }
 .tickerList{
   border-style: solid;
@@ -16,6 +39,8 @@
   border-radius: 20px;
   background-color: rgb(1, 0, 17);
   grid-area: 2 / 2 / 5 / 3;
+  border: 3px solid red;
+
 }
 .top-right{
   border-style: solid;
@@ -29,9 +54,6 @@
 .top-right-container{
   display: flex;
   flex-direction: row;
-  /* margin-top: 50px; */
-  /* border: 1px dashed  red; */
-
 }
 
 .bottom-left{
@@ -46,8 +68,30 @@
 .bottom-left-container{
   display: flex;
   flex-direction: row;
-}
+} */
 
+@media screen and (max-width: 720px){
+  .grid{
+    display: flex;
+    flex-direction: column;
+    /* grid-template-columns: 1fr;
+    grid-template-rows: 2fr 1fr; */
+  }
+  .TickerList{
+    width: 720px;
+    max-height: 600px !important;
+    overflow-y: scroll;
+    display:block;
+    /* border: 2px solid red !important; */
+  }
+  .TickerList table tbody{
+    overflow-y: scroll;  
+    height: 200px;
+    scroll-behavior: smooth;
+    scrollbar-color: rgb(0, 14, 69) rgb(1, 0, 17);
+    scrollbar-width: thin;
+  }
+} 
 
 @import url('https://fonts.googleapis.com/css2?family=Electrolize&display=swap');
 

@@ -1,11 +1,11 @@
-.container{
+.searchContainer{
     display: flex;
     flex-direction: row;
+    justify-content: flex-start;
     width: 100%;
     font-size: 5px;
 }
-
-.add_button_image{
-    width: 10px;
-    height: 75%;
+.searchContainer:hover{
+    background-color: blue;
+    cursor: pointer;
 }

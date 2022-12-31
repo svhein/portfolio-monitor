@@ -36,7 +36,7 @@ export function Totalvalue(props){
     let totalValueFormat = new Intl.NumberFormat('fi-FI', {style: 'currency', currency: 'EUR'}).format(totalValue)
 
     // return <h1 className='price' style={{color: textColor}}> {(totalValue.toFixed(2)).toLocaleString('fi-FI')} </h1>
-    return <h1 className='price' style={{color: textColor}}> {totalValueFormat} </h1>
+    return <td className='price' style={{color: textColor}}> {totalValueFormat} </td>
     // return totalValue.toFixed(2);
 }
 

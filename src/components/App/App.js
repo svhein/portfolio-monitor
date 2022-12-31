@@ -8,67 +8,77 @@ import Currencies from '../Currencies/Currencies';
 import Infobar from '../Infobar/Infobar';
 import Trade from '../TradeForms/Trade'
 import ActiveTrades from '../ActiveTrades/ActiveTrades';
-import Login from '../Login/Login';
+import {Login, Logout} from '../Login/Login';
 import PieChart from '../PieChart/PieChart';
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import { auth, database } from "../../utils/firebase-config.js";
-import { onAuthStateChanged } from "firebase/auth";
-import { ref, set, update } from "firebase/database";
+import { onAuthStateChanged} from "firebase/auth";
+import {ref, set, child, get} from "firebase/database";
+import { UserContext } from '../../utils/userContext';
+
+
 
 
 function App(props) {
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState(null);
+
   const storeData = useSelector((store) => store.tickers)
-
-  // storeInitialized returns boolean based on whether redux store
-  // has got data from realtime db
   const storeInitialized = useSelector((store) => store.IsInitialized)
+  const dispatch = useDispatch();
 
-  //start sending data to db when user is logged in
   useEffect(() => {
-    if (storeInitialized){
-      onAuthStateChanged(auth, (user) => {
-        if (user) {
-          setIsLoggedIn(true);
-          const uid = user.uid;
-          // const updates = {};
-          // updates[`users/${uid}/portfolios/main`] = storeData;
-          const reference =  ref((database), `users/${uid}/portfolios/main`)
-     
-          const sendDataToDb = () => {
-            set(reference, storeData);
-          }
-          sendDataToDb();
-        } else {
-          setIsLoggedIn(false)
+    onAuthStateChanged(auth, function(user){
+      if (user){
+        setUser(user)
+        // console.log('user uid', auth.currentUser.uid)
+        get(child(ref(database), 'users/' + user.uid)).then((snapshot) => {
+          if(snapshot.exists()){
+            // if user exists, read data from db and update redux
+            get(child(ref(database), 'users/' + user.uid + '/portfolios/main'))
+                .then(snapshot => {
+                    console.log(snapshot.val())
+
+                    let portfolio = snapshot.val();
+
+                    console.log('portfolio from db')
+                    console.log(portfolio)
+
+                    // create list of ticker symbols in db
+                    let tickerList = []
+                    for (let i = 0; i < portfolio.length; i++){
+                        tickerList.push(portfolio[i].id)
+                    }
+                    
+                    console.log('setting tickers to store... (Login.js)')
+                    console.log(tickerList)
+                    dispatch({ type: 'SET_TICKERS', payload: portfolio })
+                })
         }
-      })
-    }
-    
-  },[storeInitialized, storeData])
+        })
+      } else {
+        console.log('user not logged in')
+      }
+    })
+  },[])
+
+  function logOutClick(){
+    setUser(null);
+  }
 
   return (
-    <div className='grid'>
-
-      <TickerList className='tickerList'/>
-
-      <div className="top-right">
-        <div className='top-right-container'>
-          <Infobar />
-          <Trade />
-          <Login />
+    <div className = "background">
+      <UserContext.Provider value={user}>
+        <div className = 'centerContainer'>
+          <TickerList className='tickerList'/>
+          <div className = 'bottom'>
+            <Infobar />
+            {user ? <Logout logOutClick={logOutClick}/> : <Login />}
+          </div>
         </div>
-      </div>
-    
-      <div className="bottom-left">
-        <div className='bottom-left-container'>
-          <ActiveTrades></ActiveTrades>
-          <PieChart />
-        </div>
-      </div>
+      </UserContext.Provider>
     </div>
   );
-  }
+}
 export default App;

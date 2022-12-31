@@ -1,3 +1,6 @@
+import {database} from "../utils/firebase-config.js"
+import {ref, set, child, get, orderByChild, equalTo} from "firebase/database";
+
 const initalState = {
     tickers: [],
     IsInitialized: false // boolean checks if data is loaded from d realtime db to store
@@ -26,7 +29,6 @@ export default function tickersReducer(state = initalState, action){
                 })
             })
 
-
             return {
                 ...state, IsInitialized: true,  tickers: action.payload
             }
@@ -45,15 +47,18 @@ export default function tickersReducer(state = initalState, action){
                 ...state, tickers: [...state.tickers.map((ticker, i) => i === index ? {...ticker, price: action.price, changePercent: action.changePercent} : ticker)]
             }
         case 'SET_AMOUNT':
-            let index_2 = state.tickers.findIndex(ticker => ticker.id === action.id)
+            let index_2 = state.tickers.findIndex(ticker => ticker.id === action.tickerId);
             return {
                 ...state, tickers: [...state.tickers.map((ticker, i) => i === index_2 ? {...ticker, amount: parseFloat(action.newAmount)} : ticker)]
             }    
+        
         case 'SET_CURRENCY':
             let index_3 = state.tickers.findIndex(ticker => ticker.id === action.id)
             return {
                 ...state, tickers: [...state.tickers.map((ticker, i) => i === index_3 ? {...ticker, currency: action.updatedCurrency} : ticker)]
             } 
+        case 'USER_LOGOUT':
+            return initalState;
         default:
             return {...state};       
     }

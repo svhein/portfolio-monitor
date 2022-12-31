@@ -1,18 +1,21 @@
-.TickerList{
-    border-style: solid;
-    border-width: thin;
-    border-color: white;
-    border-radius: 20px;
-    background-color: rgb(1, 0, 17);
-    grid-area: 2 / 2 / 5 / 3;
 
-    table-layout: fixed;
-    border-collapse: collapse;
-    border-radius: 20px;
-  }
+.TickerList{
+  display: block;
+  height: 400px;     
+  overflow-y: auto;    
+  overflow-x: hidden;  
+  scroll-behavior: smooth;
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  /* mozilla scrollbar */
+  scrollbar-color: rgb(0, 14, 69) rgb(1, 0, 17);
+  scrollbar-width: thin;
+}
 
 tr{
   vertical-align: top;
+
 }
 
 tr:nth-child(even) {
@@ -21,17 +24,28 @@ tr:nth-child(even) {
 
 th{
   vertical-align: top;
+  text-align: left;
   color: white;
-  height: 35px;
-  border: 1px solid;
+  height: 25px;
+  position: sticky;
+  top: 0px;
+  background-color:rgb(8, 3, 77);
+  border: 1px thin white;
+  /* padding-left: 40px; */
+  padding-right: 40px;
+  width: 50px;
+  padding-top: 4px;
 }
 td{
   vertical-align: top;
   color: white;
-  height: 20px;
   vertical-align: baseline;
   /* border: 1px solid red; */
   text-transform: uppercase;
+}
+
+#amount{
+  padding-right: 20px;
 }
 
 .header{
@@ -52,9 +66,19 @@ td{
   justify-content: center;
   border-radius: 8px;
   border: thin solid white;
-  
+}
+
+#addButtonRow{
+  position: sticky;
+  bottom: 0;
 }
 
 #add_button:hover{
   background-color:rgb(8, 3, 77);
+}
+
+@media only screen and (max-width: 750px) {
+  .TickerList {
+    width: 100vw;
+  }
 }

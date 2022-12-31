@@ -1,24 +1,30 @@
 
-import React from 'react'
+import {React, useContext} from 'react'
 import { Totalvalue  } from '../Totalvalue/Totalvalue';
 import { PriceChangeToday, ChangePercentToday } from '../ChangeToday/ChangeToday'
+import { UserContext } from '../../utils/userContext';
 
 import "./Infobar.css"
 
 // uuteen layouttiin:
 // %-osuudet horisontaalisena palkkina
 // day low-high kynttil' vertikaaliseen
+// top-3 listat?
 
 function Infobar(props) {
+  const user = useContext(UserContext)
+
   return (
-    <div>
-       <table className="infoTable">
+       <table className="infoBar">
            <tr>
+                {/* <td>
+                    logged in as {user ? user.displayName : 'nothing'}
+                </td> */}
                <td >
                    TOTAL
                </td>
                <td>
-                   <Totalvalue />
+                   <Totalvalue /> 
                </td>
            </tr>
            <tr>
@@ -26,19 +32,16 @@ function Infobar(props) {
                    CHANGE TDY
                </td>
                <td>
-                   <PriceChangeToday />
+                   <PriceChangeToday /> €
                </td>
            </tr>
            <tr>
                <td>
                    CHANGEPCT TDY
                </td>
-               <td>
-                   {ChangePercentToday()} %
-               </td>
+                   {ChangePercentToday()} %  
            </tr>
        </table>
-    </div>
   )
 }
 export default Infobar

@@ -5,6 +5,8 @@ import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import CurrencyDropdown from '../CurrencyDropdown/CurrencyDropdown';
 import YahooWebSocket from '../../utils/YahooWebSocket';
 import proto from '../../utils/YPricingData.proto';
+import axios from 'axios';
+import { UpdateDatabase } from '../../utils/updateDatabase';
 const protobuf = require("protobufjs");
 const { Buffer } = require('buffer/');
 
@@ -17,6 +19,7 @@ function TickerNew(props){
     const [isLoading, setIsLoading] = useState(true);
     const [percentColor, setPercentColor] = useState('white');
     const [priceColor, setPriceColor] = useState('white');
+    const [oldPrice, setOldPrice] = useState(0)
 
     const tickerId = props.name
 
@@ -35,10 +38,15 @@ function TickerNew(props){
         setChangePercent(ticker.changePercent)
     }, [])
 
+    useEffect(() => {
+        axios.get(`http://localhost:8000/${props.name}`).then((result) => {
+            setPrice(result.data)
+        })
+    }, [])
+
 
     // connect to websocket
     useEffect(() => {
-
         protobuf.load(proto, (error, root) => {
             console.log('protobuf load')
             if (error){
@@ -53,15 +61,16 @@ function TickerNew(props){
                 }));
                 console.log("subscribed " + props.name)
             }
-            let oldPrice = 0;
+        
             socket.onmessage = (message) => {
                 // console.log('got message to ' + props.name)
                 let messageData = (yahooMessage.decode(new Buffer(message.data, 'base64')));
-                let messagePrice = Number(messageData.price).toFixed(2);
+                let messagePrice = Number(messageData.price).toFixed(4);
                 let messagePercent = Number(messageData.changePercent).toFixed(2);
-                let priceDifference = oldPrice - messagePrice;
+                let marketHours = messageData.marketHours
+                let priceDifference = messagePrice - oldPrice;
                 flashColor(priceDifference);
-                oldPrice = messagePrice;
+                setOldPrice(messagePrice);
                 setPrice(messagePrice);
                 setChangePercent((messageData.changePercent).toFixed(2));
                 
@@ -81,8 +90,9 @@ function TickerNew(props){
 
     // blink when price changes
     function flashColor(priceDifference){
-        if (priceDifference > 0.1 || priceDifference < -0.1 ){
+        if (Math.abs(priceDifference )> 0.00005 ){
             let color = priceDifference >= 0 ? "green" : "red"; 
+            // console.log(priceDifference + ' diff ' + color)
             setPriceColor(color)
             setTimeout(() => {
                 setPriceColor("white")
@@ -93,8 +103,9 @@ function TickerNew(props){
     function handleAmountChange(e){ 
         const value = e.target.textContent;
         setAmount(Number(value));
-        dispatch({type: 'SET_AMOUNT', id: props.name, newAmount: Number(value)})
+        dispatch({type: 'SET_AMOUNT', tickerId: props.name, newAmount: Number(value)})
         console.log('set new amount to ' + Number(value))
+        UpdateDatabase();
     }
 
     return(

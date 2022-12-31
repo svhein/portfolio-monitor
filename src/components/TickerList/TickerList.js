@@ -42,37 +42,38 @@ function TickerList(props){
       }
     
     return(
-        <table className='TickerList'>
+            <table className='TickerList'>
 
-            <thead className='header'>
-                <tr>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Curr</th>
-                    <th>Change</th>
-                    <th>Amount</th>
-                    <th>Total</th>
-                </tr>
-            </thead>
-            <tbody>
-                {/* render tickers */}
-                {tickersFromStore?.map((ticker) => <TickerNew key={ticker} name={ticker} removeTicker={removeTicker}/>)} 
-                    
-                <tr>
-                    <td colSpan="7">
-                        {/* ADD BUTTON */}
-                        <SearchPopup addTicker={addTicker}></SearchPopup>
-                    </td>
-                </tr>
+                <thead className='header'>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Curr</th>
+                        <th>Change</th>
+                        <th id = 'amount'>Amount</th>
+                        <th>Total</th>
+                        <th style={{paddingRight: 0}}></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {/* render tickers */}
+                    {tickersFromStore?.map((ticker) => <TickerNew key={ticker} name={ticker} removeTicker={removeTicker}/>)} 
+                        
+                    <tr>
+                        <td id='addButtonRow' colSpan="7">
+                            {/* ADD BUTTON */}
+                            <SearchPopup addTicker={addTicker}></SearchPopup>
+                        </td>
+                    </tr>
 
-                <tr style={{height: "100%"}}>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                    {/* <tr style={{height: "100%"}}>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr> */}
 
-            </tbody>
-        </table>
+                </tbody>
+            </table>
         )          
 }
 export default TickerList;  

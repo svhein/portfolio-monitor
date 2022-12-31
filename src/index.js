@@ -9,7 +9,8 @@ import tickersReducer from './reducers/stocksReducer'
 import { createStore } from 'redux'
 import {userSelector} from 'react-redux'
  
-let store = createStore(tickersReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = createStore(tickersReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+export {store};
 
 ReactDOM.render(  
   <React.StrictMode>
@@ -19,6 +20,7 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

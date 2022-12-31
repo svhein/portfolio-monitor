@@ -1,5 +1,4 @@
 import React, { useState, useEffect} from 'react';
-import ReactDOM from 'react-dom'
 import './Ticker.css';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import CurrencyDropdown from '../CurrencyDropdown/CurrencyDropdown';
@@ -29,6 +28,7 @@ class Ticker extends React.Component{
     
     UNSAFE_componentWillMount(){
         // fetch share price from server
+        console.log('getting price')
         axios.get(`http://localhost:8000/${this.props.name}`)
             .then(result => {this.props.dispatch({type: 'ADD', payload: this.props, id: this.props.name, startPrice: result.data, price: result.data, defaultPercent: 0, amount: 1, currency: this.state.currency})
                             this.setState({ticker: {...this.state.ticker, price: result.data, changePercent: 0}})})

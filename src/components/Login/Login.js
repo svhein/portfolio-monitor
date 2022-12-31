@@ -1,17 +1,18 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import './Login.css'
 import {auth, googleProvider, database} from "../../utils/firebase-config.js"
-import {signInWithPopup} from 'firebase/auth'
+import {signInWithPopup, signInWithRedirect, signOut} from 'firebase/auth'
 import {ref, set, child, get} from "firebase/database";
 import { useDispatch, useSelector } from 'react-redux'
+import { UserContext } from '../../utils/userContext';
 
-function Login(props) {
+export function Login(props) {
 
     const dispatch = useDispatch();
 
     function logInWithGoogle(){
         
-        const result = signInWithPopup(auth, googleProvider).then((result) => {
+        const result = signInWithRedirect(auth, googleProvider).then((result) => {
 
             const user = result.user;
             console.log(user);
@@ -66,4 +67,25 @@ function Login(props) {
   )
 }
 
-export default Login
+export function Logout(props){
+    const user = useContext(UserContext);
+    const dispatch = useDispatch();
+    
+    async function signUserOut(){
+    signOut(auth)   
+        .then(props.logOutClick)
+        .then(dispatch({type: 'USER_LOGOUT'}))
+        .then(() => console.log('Logout succesful'))
+        .catch(e => console.log('Error on logout', e))
+    console.log(user)
+    }
+
+    return (
+        <>
+            <button className='login_button' onClick={async() => signUserOut()}>Sign Out</button>
+        </>
+    )
+}
+
+
+

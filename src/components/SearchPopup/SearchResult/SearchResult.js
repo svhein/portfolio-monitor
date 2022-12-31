@@ -6,10 +6,8 @@ function SearchResult(props){
 
     return(
         <ol>
-        <div className="container">
-            <h1>{props.shortname}</h1>
-            <h1>{props.ticker}</h1>
-            <button onClick = {() => {props.addTicker(props.ticker)}}> <img className="add_button_image" src={add_button_image} /> </button>
+        <div  onClick = {() => {props.addTicker(props.ticker)}} className="searchContainer">
+            <h1>{props.shortname}{'   '}{props.ticker}</h1>
         </div>
         </ol>)
 }

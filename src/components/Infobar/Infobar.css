@@ -1,15 +1,14 @@
-.infoTable{
-    margin-top: 50px;
-
+.infoBar{
+  /* display: block; */
+    /* margin-top: 50px; */
+    height: 100px;
 }
 
-.infoTable > tr > td {
-  vertical-align: top;
+.infoBar > tr > td {
   color: white;
   height: 20px;
-  vertical-align: baseline;
-  /* border: 1px solid red; */
+  /* vertical-align: baseline; */
+  border: 1px solid red;
   text-transform: uppercase;
-  
 }
 
