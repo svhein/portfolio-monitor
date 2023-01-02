@@ -33,10 +33,11 @@ export function Totalvalue(props){
     }
 
     //totalValue = tickers.reduce((sum, next) => sum + next.price * next.amount, 0)
-    let totalValueFormat = new Intl.NumberFormat('fi-FI', {style: 'currency', currency: 'EUR'}).format(totalValue)
+    // let totalValueFormat = new Intl.NumberFormat('fi-FI', {style: 'currency', currency: 'EUR'}).format(totalValue)
+    
 
     // return <h1 className='price' style={{color: textColor}}> {(totalValue.toFixed(2)).toLocaleString('fi-FI')} </h1>
-    return <td className='price' style={{color: textColor}}> {totalValueFormat} </td>
+    return <td className='price' style={{color: textColor}}> {totalValue.toFixed(2)} € </td>
     // return totalValue.toFixed(2);
 }
 

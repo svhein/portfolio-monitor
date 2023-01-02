@@ -6,11 +6,16 @@
   background-color: rgb(1, 0, 17);
 }
 
-.bottom{
+.infoRow{
   display:flex;
   width: 100%;
   /* flex: 1; */
   flex-direction: row;
+  margin-top: 10px;
+}
+
+.centerContainer{
+  width: 594px;
 }
 
 /* 
@@ -77,19 +82,31 @@
     /* grid-template-columns: 1fr;
     grid-template-rows: 2fr 1fr; */
   }
+  .background{
+    width: 100vw;
+    height: 100vh;
+  }
+
   .TickerList{
     width: 720px;
-    max-height: 600px !important;
+    /* max-height: 600px !important; */
     overflow-y: scroll;
     display:block;
     /* border: 2px solid red !important; */
   }
   .TickerList table tbody{
     overflow-y: scroll;  
-    height: 200px;
-    scroll-behavior: smooth;
+    /* height: 200px; */
+    /* scroll-behavior: smooth;
     scrollbar-color: rgb(0, 14, 69) rgb(1, 0, 17);
-    scrollbar-width: thin;
+    scrollbar-width: thin; */
+  }
+  .infoRow{
+    width: 100vw;
+    /* border: 2px solid yellow; */
+    overflow-y: scroll;
+    scroll-behavior: auto;
+    scroll-margin: 0;
   }
 } 
 

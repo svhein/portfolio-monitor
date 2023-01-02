@@ -16,8 +16,8 @@ import { auth, database } from "../../utils/firebase-config.js";
 import { onAuthStateChanged} from "firebase/auth";
 import {ref, set, child, get} from "firebase/database";
 import { UserContext } from '../../utils/userContext';
-
-
+import {TopGainersPercent, BottomGainersPercent, TopGainersPortfolio, BottomGainersPortfolio} from '../Gainers/Gainers';
+import Marquee from '../Marquee/Marquee'
 
 
 function App(props) {
@@ -72,10 +72,17 @@ function App(props) {
       <UserContext.Provider value={user}>
         <div className = 'centerContainer'>
           <TickerList className='tickerList'/>
-          <div className = 'bottom'>
+          <Marquee />
+          <div className = 'infoRow'>
             <Infobar />
-            {user ? <Logout logOutClick={logOutClick}/> : <Login />}
+            <TopGainersPercent />
+            <BottomGainersPercent />
           </div>
+          <div className='infoRow'>
+            <TopGainersPortfolio />
+            <BottomGainersPortfolio />
+          </div>
+          {user ? <Logout logOutClick={logOutClick}/> : <Login />}
         </div>
       </UserContext.Provider>
     </div>

@@ -5,7 +5,7 @@
   overflow-y: auto;    
   overflow-x: hidden;  
   scroll-behavior: smooth;
-  width: 100%;
+  width: 604px;
   table-layout: fixed;
   border-collapse: collapse;
   /* mozilla scrollbar */
@@ -22,7 +22,7 @@ tr:nth-child(even) {
   background-color: rgb(12, 12, 37);
 }
 
-th{
+.tickerListHeader > tr > th{
   vertical-align: top;
   text-align: left;
   color: white;

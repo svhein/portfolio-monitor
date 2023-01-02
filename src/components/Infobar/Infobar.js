@@ -3,6 +3,7 @@ import {React, useContext} from 'react'
 import { Totalvalue  } from '../Totalvalue/Totalvalue';
 import { PriceChangeToday, ChangePercentToday } from '../ChangeToday/ChangeToday'
 import { UserContext } from '../../utils/userContext';
+import TopGainers from '../Gainers/Gainers';
 
 import "./Infobar.css"
 
@@ -15,7 +16,13 @@ function Infobar(props) {
   const user = useContext(UserContext)
 
   return (
-       <table className="infoBar">
+       <table className="infoBar" style={{width: '50%'}}> 
+            <thead>
+                <tr>
+                    <th>PORTFOLIO STATS</th>
+                    <th></th>
+                </tr>
+            </thead>
            <tr>
                 {/* <td>
                     logged in as {user ? user.displayName : 'nothing'}
@@ -39,7 +46,7 @@ function Infobar(props) {
                <td>
                    CHANGEPCT TDY
                </td>
-                   {ChangePercentToday()} %  
+                   {ChangePercentToday()} 
            </tr>
        </table>
   )

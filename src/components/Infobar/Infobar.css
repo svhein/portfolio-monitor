@@ -2,13 +2,23 @@
   /* display: block; */
     /* margin-top: 50px; */
     height: 100px;
+    width: 33%;
+    border-collapse: collapse;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .infoBar > tr > td {
   color: white;
   height: 20px;
   /* vertical-align: baseline; */
-  border: 1px solid red;
+  /* border: 1px solid red; */
   text-transform: uppercase;
 }
 
+.infoBar > thead > tr > th {
+  font-weight: normal;
+  white-space: nowrap;
+  color: white;
+  border-bottom: 1px solid white;
+}

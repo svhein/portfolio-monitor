@@ -1,0 +1,31 @@
+.gainersTable{
+    border-collapse: collapse;
+    width: 33%;
+    position: relative;
+}
+
+.moversTable{
+    width: 50%;
+    position: relative;
+    border-collapse: 'collapse';
+}
+
+.gainersHeader > tr > th{
+    color: white;
+    font-weight: normal;
+    border-bottom: 1px solid white;
+    border-collapse: collapse;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.gainersHeader > tr > td{
+    padding-right: 10px;
+}
+
+@media screen and (max-width: 720px){
+    .gainersTable{
+        width: 50vh;
+        /* border: 2px solid green; */
+    }
+}
