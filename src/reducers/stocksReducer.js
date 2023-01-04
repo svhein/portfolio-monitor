@@ -11,7 +11,7 @@ export default function tickersReducer(state = initalState, action){
     switch(action.type){       
         case 'ADD' : 
             return { 
-                ...state, tickers: [...state.tickers, {id: action.id,
+                ...state, IsInitialized: true,  tickers: [...state.tickers, {id: action.id,
                                                      price: action.startPrice,
                                                      changePercent: action.defaultPercent,
                                                      amount: action.amount,
@@ -34,7 +34,7 @@ export default function tickersReducer(state = initalState, action){
             }
         case 'REMOVE' :
             return {
-                ...state, tickers: [...state.tickers.filter(item => item.id !== action.id)]
+                ...state, IsInitialized: true, tickers: [...state.tickers.filter(item => item.id !== action.id)]
             }
         // case 'UPDATE' : 
         //     let index = state.tickers.findIndex(ticker => ticker.id === action.payload.id)

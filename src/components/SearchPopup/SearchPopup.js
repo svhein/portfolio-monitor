@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Popup from 'reactjs-popup';
 import './SearchPopup.css'
 import SearchResult from './SearchResult/SearchResult'
@@ -9,19 +9,25 @@ function SearchPopup(props){
   
   function handleInputChange(event){
     const searchWord = event.target.value;
-    fetch(`http://localhost:8000/search/${searchWord}`)
+    if (searchWord){
+      fetch(`https://portfolioserver-rqvj6ywtea-lz.a.run.app/${searchWord}`)
       .then(response => {return response.json()})
       //.then(response => console.log(response))
       .then(response => {setSearchResults(response)})
       console.log(searchResults)
+    }
+  
   }
+
+  // useEffect(() => {
+  //   inputRef.current.focus();
+  // }, [])
 
     return(  
         <Popup
         trigger={<button id="add_button"> Add </button>}
         position="top center"
         modal
-    
       >
         {close => (
           <div className="modal">

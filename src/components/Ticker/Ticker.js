@@ -12,10 +12,10 @@ const { Buffer } = require('buffer/');
 
 function TickerNew(props){
 
-    const [price, setPrice] = useState(100)
+    const [price, setPrice] = useState(null)
     const [amount, setAmount] = useState(1);
     const [currency, setCurrency]  = useState('usd');
-    const [changePercent, setChangePercent] = useState(0);
+    const [changePercent, setChangePercent] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [percentColor, setPercentColor] = useState('white');
     const [priceColor, setPriceColor] = useState('white');
@@ -29,6 +29,8 @@ function TickerNew(props){
         const tick = state.tickers.find(ticker => ticker.id == props.name)
         return tick;
     });
+
+    const storeTickers = useSelector(state => state.tickers)
     const dispatch = useDispatch()
 
 
@@ -47,9 +49,12 @@ function TickerNew(props){
 
     useEffect(() => {
         console.log(props.type)
-        axios.get(`http://localhost:8000/${props.name}`).then((result) => {
-            setPrice(result.data)
+        axios.get(`https://portfolioserver-rqvj6ywtea-lz.a.run.app/${props.name}`).then((result) => {
+            setPrice(result.data[0])
+            setChangePercent(parseFloat(result.data[1]).toFixed(2))
+            console.log('changePercent set to ' + changePercent)
         })
+        .catch(e => console.log('Fetching price failed: ', e))
     }, [])
 
 
@@ -127,7 +132,7 @@ function TickerNew(props){
                 <td style={{color: priceColor}}> {price} </td>
     
                 {/* CURRENCY */}
-                {window.innerWidth > 500 ? <td>    <CurrencyDropdown ticker={props.name} />   </td> : null}
+                {window.innerWidth > 500 ? <td>    <CurrencyDropdown ticker={props.name} currency={currency} />   </td> : null}
     
                 {/* CHANGEPERCENT */}
                 <td style={{color: percentColor}}> {changePercent} % </td>
@@ -154,11 +159,12 @@ function TickerNew(props){
     }
 
     if (props.type == 'marqueeItem'){
+        let color = changePercent > 0 ? 'green' : changePercent == 0 ? 'white' : 'red';
         return(
             <div className = 'marqueeItem'>
                 <p>{props.name}</p>
-                <p>{' '}{price}</p>
-                <p>{' '}{changePercent}{'    '}</p>
+                {/* <p>{' '}{price}</p> */}
+                <p style={{color: color}}>{' '}{changePercent}%{'    '}</p>
             </div>
         )
     }

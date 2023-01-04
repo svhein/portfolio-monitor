@@ -77,8 +77,14 @@ td{
   background-color:rgb(8, 3, 77);
 }
 
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 604px) {
   .TickerList {
     width: 100vw;
+  }
+
+  #add_button{
+    width:         calc(100% - 40px);
+    width: -webkit-calc(100% - 40px);
+    width:    -moz-calc(100% - 40px);
   }
 }

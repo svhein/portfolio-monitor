@@ -59,6 +59,10 @@ function App(props) {
         })
       } else {
         console.log('user not logged in')
+        fetch('https://portfolioserver-rqvj6ywtea-lz.a.run.app//portfolio/default')
+          .then(result => result.json())
+          // .then(result => console.log(result))
+          .then(result => dispatch({type: 'SET_TICKERS', payload: result}))
       }
     })
   },[])
@@ -82,7 +86,9 @@ function App(props) {
             <TopGainersPortfolio />
             <BottomGainersPortfolio />
           </div>
-          {user ? <Logout logOutClick={logOutClick}/> : <Login />}
+          <div className='loginRow'>
+            {user ? <Logout className = 'logout' logOutClick={logOutClick}/> : <Login />}
+          </div>
         </div>
       </UserContext.Provider>
     </div>

@@ -4,17 +4,21 @@ import './TickerList.css'
 import Ticker from '../Ticker/Ticker'
 import SearchPopup from '../SearchPopup/SearchPopup';
 import { UpdateDatabase } from '../../utils/updateDatabase';
-
- 
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
 function TickerList(props){
 
     const dispatch = useDispatch();
+    const [isLoading, setIsLoading] = useState(true);
     
     const tickersFromStore = useSelector((state) => {
         const ids = state.tickers.map(ticker => ticker.id);
         return ids;
     })
+
+    useEffect(() => {
+        setIsLoading(false)
+    }, [])
 
 
     const addTicker = (name) => {
@@ -27,11 +31,15 @@ function TickerList(props){
     }
 
     const removeTicker = (name) => {
-        dispatch({
-            type: 'REMOVE',
-            id: name
-        })
-        UpdateDatabase();
+        console.log(tickersFromStore.length)
+        if (tickersFromStore.length > 1 ){
+            dispatch({
+                type: 'REMOVE',
+                id: name
+            })
+            UpdateDatabase();
+        }
+       
         
       }
     
@@ -51,7 +59,9 @@ function TickerList(props){
                 </thead>
                 <tbody>
                     {/* render tickers */}
-                    {tickersFromStore?.map((ticker) => <Ticker type='tableItem' key={ticker} name={ticker} removeTicker={removeTicker}/>)} 
+                    {/* {tickersFromStore?.map((ticker) => <Ticker type='tableItem' key={ticker} name={ticker} removeTicker={removeTicker}/>)}  */}
+                    {tickersFromStore.length > 0 ? tickersFromStore?.map((ticker) => <Ticker type='tableItem' key={ticker} name={ticker} removeTicker={removeTicker}/>) 
+                        : <LoadingSpinner></LoadingSpinner>}
                         
                     <tr>
                         <td id='addButtonRow' colSpan="7">

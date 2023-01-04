@@ -5,4 +5,38 @@
 
     height: 2rem;
     border-radius: 5px;
+    width: 5rem;
+    
+    /* margin: auto; */
+}
+
+.login_button:hover{
+    cursor: pointer;
+    background-color: rgb(8, 3, 77);
+}
+
+.logout_button{
+    background-color: rgb(1, 0, 17);
+    color: white;
+    border: thin solid rgb(1, 0, 17);;
+
+    height: 2rem;
+    border-radius: 5px;
+    width: 5rem;
+    
+    /* margin: auto; */
+}
+
+.logout_button:hover{
+    cursor: pointer;
+    background-color: rgb(8, 3, 77);
+}
+
+.logout{
+    white-space: pre;
+    color:lightsteelblue;
+}
+
+.login_button{
+
 }

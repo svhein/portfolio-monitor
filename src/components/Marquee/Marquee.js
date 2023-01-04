@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import Ticker from '../Ticker/Ticker'
+import ReactMarquee from "react-fast-marquee";
 import './Marquee.css'
 
 function Marquee(props){
@@ -12,19 +13,14 @@ function Marquee(props){
         '^OMXH25'
     ]
 
-    function MarqueeContent(){
-        let components = [];
-        content.map(item => {
-            components.push(<Ticker type='marqueeItem' key={item} name={item} />)
-        })
-        return components
-    }
+    const contentComponents = content.map(item => <Ticker type='marqueeItem' key={item} name={item} />)
 
     return (
-            <marquee>
-                {/* {content.map(item => <Ticker type='marqueeItem' key={item} name={item} />)} */}
-                <MarqueeContent />
-            </marquee>
+        <ReactMarquee className = 'marquee' gradient={false}>
+            {contentComponents}
+            {contentComponents}
+        </ReactMarquee>
+
     )
 }
 

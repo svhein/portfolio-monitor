@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
 import './CurrencyDropdown.css'
 import {useDispatch} from 'react-redux';
+import { UpdateDatabase } from '../../utils/updateDatabase';
 
 function CurrencyDropdown(props){
 
-    const [currency, setCurrency] = useState('USD')
+    const [currency, setCurrency] = useState(props.currency)
     const dispatchUpdatedCurrency = useDispatch();
 
     function handleChange(e){
@@ -14,12 +15,14 @@ function CurrencyDropdown(props){
             id: props.ticker,
             updatedCurrency: e.target.value
         })
+        UpdateDatabase();
+
     }
 
     return (
         <div>
-            <select ticker={props.ticker} onChange={handleChange} className='dropdown'>
-                <option value='USD'>USD</option>
+            <select value={props.currency} ticker={props.ticker} onChange={handleChange} className='dropdown'>
+                <option value='usd'>USD</option>
                 <option value='EUR'>EUR</option>
             </select>
         </div>

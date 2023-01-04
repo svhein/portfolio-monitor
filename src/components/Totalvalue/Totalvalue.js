@@ -22,10 +22,10 @@ export function Totalvalue(props){
 
     function chooseColor(){
         if (totalValue > latestValue + 0.01){
-            return 'green'
+            return 'red'
         }
         if (totalValue < latestValue - 0.01){
-            return 'red'
+            return 'green'
         }
         else{
             return 'white'

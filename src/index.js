@@ -12,6 +12,10 @@ import {userSelector} from 'react-redux'
 const store = createStore(tickersReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 export {store};
 
+if (process.env.NODE_ENV === 'production') {
+  console.log = () => {}
+}
+
 ReactDOM.render(  
   <React.StrictMode>
     <Provider store = {store}>

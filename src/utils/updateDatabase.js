@@ -13,6 +13,7 @@ export function UpdateDatabase(){
     if (storeInitialized && auth.currentUser){
         const uid = auth.currentUser.uid;
         const reference = ref((database), `users/${uid}/portfolios/main`);
+        console.log(reference)
         console.log('Updating database...')
         set(reference, storeData)
     }

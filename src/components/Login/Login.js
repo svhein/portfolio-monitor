@@ -50,8 +50,7 @@ export function Login(props) {
 
                     // set default portfolio
                     set(ref(database, `users/${result.user.uid}/portfolios/main`), {
-                        0: {"tickerSymbol": "NOKIA.HE", "amount": 1000},
-                        1: {"tickerSymbol": "AAPL", "amount": 500}
+                        0: {"tickerSymbol": "NOKIA.HE", "amount": 1, 'changePercent': 0, 'currency': 'EUR', 'price': 5}
                     })
                 }
                 })   
@@ -81,11 +80,8 @@ export function Logout(props){
     }
 
     return (
-        <>
-            <button className='login_button' onClick={async() => signUserOut()}>Sign Out</button>
-        </>
+            <p className = 'logout'>
+                Logged in as {user.displayName}{'  '} <button className = 'logout_button' onClick={async() => signUserOut()}>Sign Out</button>
+            </p> 
     )
 }
-
-
-

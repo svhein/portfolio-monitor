@@ -2,8 +2,9 @@
     display:flex;
     justify-content: center;
     content: "";
-    width: 10px;
-    height: 10px;
+    width: 50px;
+    height: 50px;
+    margin: auto;
     border: 2px solid;
     border-top-color: red;
     border-bottom-color: red;
@@ -11,20 +12,32 @@
     animation: loadingAnimation 1s linear infinite;
 }
 
-/* .loading:before{
-    content: "";
-    width: 10px;
-    height: 10px;
-    border: 2px solid;
-    border-top-color: red;
-    border-bottom-color: red;
-    border-radius: 50%;
-    animation: loadingAnimation 1s linear infinite;
-    
-} */
+.ovalWrapper{
+    width: 100%;
+}
+
+
+.ovalContainer{
+    display: flex;
+    flex: 1 1 auto;
+    justify-content: center;
+    width: 604px;
+}
+
+svg{
+    display:flex;
+    flex: 1 1;
+
+}
 
 @keyframes loadingAnimation {
     to {
         transfrom: rotate(1turn);
+    }
+}
+
+@media screen and (max-width: 604px){
+    .ovalContainer{
+        width: 100vw;
     }
 }

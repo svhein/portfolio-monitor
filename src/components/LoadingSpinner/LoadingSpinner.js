@@ -4,13 +4,17 @@ import { Oval } from  'react-loader-spinner'
 
 function LoadingSpinner(props){
 
-    return <Oval
-    height="15"
-    width="15"
-    color='white'
-    ariaLabel='loading'
-    />
-
+    return(
+        <div className = 'ovalContainer'>
+            <Oval
+                height="50"
+                width="50"
+                color='red'
+                ariaLabel='loading'
+                wrapperClassName = 'ovalWrapper'
+            />
+        </div>
+    ) 
 }
 
 export default LoadingSpinner;
