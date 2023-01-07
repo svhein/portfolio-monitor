@@ -1,6 +1,7 @@
 # Portfolio monitor
 
 [Create React App](https://github.com/facebook/create-react-app). <br>
+Web app for real-time portfolio and stock price monitoring. <br>
 Portfolio monitor is web app that allows you to track your portfolio value or any invidual stock price in real-time. <br>
 App is being build by React, Redux, Express.js and Firebase.
 
