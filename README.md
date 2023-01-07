@@ -13,10 +13,19 @@ App is being build by React, Redux, Express.js and Firebase.
 - Mobile friendly
  
 
-### Deployment
+## Run locally
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+1. Clone the reposity <br>
+```
+git clone git@github.com:svhein/portfolio-monitor.git
+```
 
-### `npm run build` fails to minify
+2. Install depencies <br>
+```
+npm install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+3. Run app in [http://localhost:3000]( http://localhost:3000)
+```
+npm run start
+```
