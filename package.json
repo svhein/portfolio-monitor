@@ -1,5 +1,6 @@
 {
   "name": "portfolio-monitor",
+  "homepage":".",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

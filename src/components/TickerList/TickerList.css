@@ -11,15 +11,18 @@
   /* mozilla scrollbar */
   scrollbar-color: rgb(0, 14, 69) rgb(1, 0, 17);
   scrollbar-width: thin;
+  overflow-x: scroll;
 }
 
 tr{
   vertical-align: top;
+  overflow-x: scroll;
+  background: rgb(1, 0, 17);
 
 }
 
 tr:nth-child(even) {
-  background-color: rgb(12, 12, 37);
+  background: rgb(12, 12, 37);
 }
 
 .tickerListHeader > tr > th{
@@ -35,6 +38,7 @@ tr:nth-child(even) {
   padding-right: 40px;
   width: 50px;
   padding-top: 4px;
+  z-index: 4;
 }
 td{
   vertical-align: top;
@@ -43,6 +47,17 @@ td{
   /* border: 1px solid red; */
   text-transform: uppercase;
 }
+
+#sticky_column{
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  background: inherit;
+}
+
+/* #sticky_column:nth-child(even){
+  background: rgb(12, 12, 37);
+} */
 
 #amount{
   padding-right: 20px;
@@ -71,6 +86,7 @@ td{
 #addButtonRow{
   position: sticky;
   bottom: 0;
+  z-index: 4;
 }
 
 #add_button:hover{

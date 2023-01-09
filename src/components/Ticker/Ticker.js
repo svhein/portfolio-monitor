@@ -126,7 +126,7 @@ function TickerNew(props){
         return(
             <tr>
                 {/* NAME */}
-                <td>    {props.name}   </td>
+                <td id='sticky_column'>    {props.name}   </td>
     
                 {/* PRICE */}
                 <td style={{color: priceColor}}> {price} </td>

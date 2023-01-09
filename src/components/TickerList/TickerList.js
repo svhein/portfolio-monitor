@@ -48,7 +48,7 @@ function TickerList(props){
 
                 <thead className='tickerListHeader'>
                     <tr>
-                        <th>Name</th>
+                        <th id='sticky_column'>Name</th>
                         <th>Price</th>
                         {window.innerWidth > 500 ? <th>Curr</th> : null}
                         <th>Change</th>

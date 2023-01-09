@@ -10,7 +10,7 @@ function SearchPopup(props){
   function handleInputChange(event){
     const searchWord = event.target.value;
     if (searchWord){
-      fetch(`https://portfolioserver-rqvj6ywtea-lz.a.run.app/${searchWord}`)
+      fetch(`https://portfolioserver-rqvj6ywtea-lz.a.run.app/search/${searchWord}`)
       .then(response => {return response.json()})
       //.then(response => console.log(response))
       .then(response => {setSearchResults(response)})
