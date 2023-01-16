@@ -10,6 +10,7 @@ App is being build by React, Redux, Node and Firebase.
 - Saves users portfolio automatically to his Google account
 - Mobile friendly
  
+ See also [portfolio-monitor-server](https://github.com/svhein/portfolio-monitor-server) reposity
 
 ## Run locally
 
@@ -28,4 +29,4 @@ npm install
 npm run start
 ```
 
-**Note** Incase I've shutdown the Firebase realtime database, you might want to setup your own and update the [firebase-config.js](https://github.com/svhein/portfolio-monitor/blob/master/src/utils/firebase-config.js)
+
