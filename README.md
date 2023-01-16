@@ -1,7 +1,7 @@
 # Portfolio monitor [https://portfolio-monitor-ef4bf.web.app/](https://portfolio-monitor-ef4bf.web.app/)
 
 Web app for real-time portfolio and stock price monitoring. <br>
-App is being build by React, Redux, Express.js and Firebase.
+App is being build by React, Redux, Node and Firebase.
 
 ## Features
 
