@@ -8,3 +8,9 @@
 .remove_button:hover{
     background: rgb(24, 24, 100)
 }
+
+#amount input{
+    background-color: inherit;
+    border: inherit;
+
+}

@@ -114,7 +114,7 @@ function TickerNew(props){
     }
     
     function handleAmountChange(e){ 
-        const value = e.target.textContent;
+        const value = e.target.value;
         setAmount(Number(value));
         dispatch({type: 'SET_AMOUNT', tickerId: props.name, newAmount: Number(value)})
         console.log('set new amount to ' + Number(value))
@@ -138,9 +138,14 @@ function TickerNew(props){
                 <td style={{color: percentColor}}> {changePercent} % </td>
     
                 {/* AMOUNT */}
-                <td id='amount' contenteditable="true" onKeyUp={handleAmountChange}>
+                {/* <td id='amount' contenteditable="true" onKeyUp={handleAmountChange}>
                         {amount}
-                </td>     
+                        
+                </td>      */}
+
+                <td id='amount'>
+                    <input id='amount' onChange={handleAmountChange} value={amount}></input>
+                </td>
     
                 {/* TOTAL VALUE   */}
                 <td> 
