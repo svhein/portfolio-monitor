@@ -44,13 +44,13 @@ function TickerList(props){
       }
     
     return(
+        <div className = 'tableContainer'>
             <table className='TickerList'>
-
                 <thead className='tickerListHeader'>
                     <tr>
-                        <th id='sticky_column'>Name</th>
+                        <th id='sticky_column' style={{zIndex: 10, background: "rgb(8, 3, 77)", paddingLeft:"10px"}}>Name</th>
                         <th>Price</th>
-                        {window.innerWidth > 500 ? <th>Curr</th> : null}
+                        {window.innerWidth > 600 ? <th>Curr</th> : null}
                         <th>Change</th>
                         <th id = 'amount'>Amount</th>
                         <th>Total</th>
@@ -71,6 +71,7 @@ function TickerList(props){
                     </tr>
                 </tbody>
             </table>
+        </div>
         )          
 }
 export default TickerList;  

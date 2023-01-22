@@ -16,8 +16,8 @@ function Infobar(props) {
   const user = useContext(UserContext)
 
   return (
-       <table className="infoBar" style={{width: '50%'}}> 
-            <thead>
+       <table className="gainersTable" style={{width: '50%'}}> 
+            <thead className = 'gainersHeader'>
                 <tr>
                     <th>PORTFOLIO STATS</th>
                     <th></th>

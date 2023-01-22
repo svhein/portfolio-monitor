@@ -12,5 +12,7 @@
 #amount input{
     background-color: inherit;
     border: inherit;
+    color: white;
+    text-align: center;
 
 }

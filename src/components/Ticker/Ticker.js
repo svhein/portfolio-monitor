@@ -114,11 +114,18 @@ function TickerNew(props){
     }
     
     function handleAmountChange(e){ 
-        const value = e.target.value;
-        setAmount(Number(value));
-        dispatch({type: 'SET_AMOUNT', tickerId: props.name, newAmount: Number(value)})
-        console.log('set new amount to ' + Number(value))
-        UpdateDatabase();
+        let value = e.target.value;
+        console.log(value)
+        if (Number.isInteger(Number(value))){
+            setAmount(Number(value));
+            dispatch({type: 'SET_AMOUNT', tickerId: props.name, newAmount: Number(value)})
+            console.log('set new amount to ' + Number(value))
+            UpdateDatabase();
+        }
+        // setAmount(Number(value));
+        // dispatch({type: 'SET_AMOUNT', tickerId: props.name, newAmount: Number(value)})
+        // console.log('set new amount to ' + Number(value))
+        // UpdateDatabase();
     }
 
 
@@ -132,7 +139,7 @@ function TickerNew(props){
                 <td style={{color: priceColor}}> {price} </td>
     
                 {/* CURRENCY */}
-                {window.innerWidth > 500 ? <td>    <CurrencyDropdown ticker={props.name} currency={currency} />   </td> : null}
+                {window.innerWidth > 600 ? <td>    <CurrencyDropdown ticker={props.name} currency={currency} />   </td> : null}
     
                 {/* CHANGEPERCENT */}
                 <td style={{color: percentColor}}> {changePercent} % </td>

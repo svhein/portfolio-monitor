@@ -43,6 +43,8 @@
   .background{
     width: 100vw;
     height: 100vh;
+    /* padding-left: 5px;
+    padding-right: 5px; */
   }
 
   .TickerList{
@@ -62,9 +64,12 @@
   .infoRow{
     width: 100vw;
     /* border: 2px solid yellow; */
-    overflow-y: scroll;
+    overflow-x: scroll;
+    overflow-y: hidden;
     scroll-behavior: auto;
     scroll-margin: 0;
+
+    scrollbar-width: 3px;
   }
 } 
 
