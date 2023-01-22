@@ -1,7 +1,7 @@
 # Portfolio monitor [https://portfolio-monitor-ef4bf.web.app/](https://portfolio-monitor-ef4bf.web.app/)
 
 Web app for real-time portfolio and stock price monitoring. <br>
-App is being build by React, Redux, Express.js and Firebase.
+App is being build by React, Redux, Node and Firebase.
 
 ## Features
 
@@ -10,6 +10,7 @@ App is being build by React, Redux, Express.js and Firebase.
 - Saves users portfolio automatically to his Google account
 - Mobile friendly
  
+ See also [portfolio-monitor-server](https://github.com/svhein/portfolio-monitor-server) reposity
 
 ## Run locally
 
@@ -28,4 +29,4 @@ npm install
 npm run start
 ```
 
-**Note** Incase I've shutdown the Firebase realtime database, you might want to setup your own and update the [firebase-config.js](https://github.com/svhein/portfolio-monitor/blob/master/src/utils/firebase-config.js)
+
