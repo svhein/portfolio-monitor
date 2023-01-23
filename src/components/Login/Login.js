@@ -12,7 +12,7 @@ export function Login(props) {
 
     function logInWithGoogle(){
         
-        const result = signInWithRedirect(auth, googleProvider).then((result) => {
+        const result = signInWithPopup(auth, googleProvider).then((result) => {
 
             const user = result.user;
             console.log(user);
