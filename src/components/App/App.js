@@ -68,7 +68,14 @@ function App(props) {
   },[])
 
   function logOutClick(){
-    setUser(null);
+    auth.signOut()
+      .then(() => {
+        console.log('Succesfully logged out')
+        setUser(null);
+      })
+      .catch((err) => {
+        console.log("Logout failed: " + err)
+      })
   }
 
   return (
