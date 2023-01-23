@@ -1,4 +1,4 @@
-# Portfolio monitor [https://portfolio-monitor-ef4bf.web.app/](https://portfolio-monitor-ef4bf.web.app/)
+# Portfolio monitor [portfolio-monitor-ef4bf.firebaseapp.com](portfolio-monitor-ef4bf.firebaseapp.com)
 
 Web app for real-time portfolio and stock price monitoring. <br>
 App is being build by React, Redux, Node and Firebase.
