@@ -14,7 +14,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import { auth, database } from "../../utils/firebase-config.js";
 import { onAuthStateChanged} from "firebase/auth";
-import {ref, set, child, get} from "firebase/database";
+import {ref, child, get} from "firebase/database";
 import { UserContext } from '../../utils/userContext';
 import {TopGainersPercent, BottomGainersPercent, TopGainersPortfolio, BottomGainersPortfolio} from '../Gainers/Gainers';
 import Marquee from '../Marquee/Marquee'
@@ -78,27 +78,38 @@ function App(props) {
       })
   }
 
-  return (
-    <div className = "background">
-      <UserContext.Provider value={user}>
-        <div className = 'centerContainer'>
-          <TickerList className='tickerList'/>
-          <Marquee />
-          <div className = 'infoRow'>
-            <Infobar />
-            <TopGainersPercent />
-            <BottomGainersPercent />
+  if (storeInitialized){
+    return (
+      <div className = "background">
+        <UserContext.Provider value={user}>
+          <div className = 'centerContainer'>
+            <TickerList className='tickerList'/>
+            <Marquee />
+            <div className = 'infoRow'>
+              <Infobar />
+              <TopGainersPercent />
+              <BottomGainersPercent />
+            </div>
+            <div className='infoRow'>
+              <TopGainersPortfolio />
+              <BottomGainersPortfolio />
+            </div>
+            <div className='loginRow'>
+              {user ? <Logout className = 'logout' logOutClick={logOutClick}/> : <Login />}
+            </div>
           </div>
-          <div className='infoRow'>
-            <TopGainersPortfolio />
-            <BottomGainersPortfolio />
-          </div>
-          <div className='loginRow'>
-            {user ? <Logout className = 'logout' logOutClick={logOutClick}/> : <Login />}
-          </div>
-        </div>
-      </UserContext.Provider>
-    </div>
-  );
+        </UserContext.Provider>
+      </div>
+    );
+  }
+  else{
+    return (
+      <div className='loading_spinner_container' style={{margin: "auto"}}>
+        <LoadingSpinner id='page_load' style={{alignItems: "center"}}/>
+      </div>
+    )
+  }
+
+ 
 }
 export default App;

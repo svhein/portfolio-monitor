@@ -28,6 +28,15 @@
   align-items: center;
 }
 
+.loading_spinner_container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 97vh;
+
+;
+}
+
 /* .logout{
   margin: auto;
 } */
