@@ -1,16 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './components/App/App.js';
+import App from './App.js';
 import reportWebVitals from './reportWebVitals';
 import {Provider} from 'react-redux'
 import tickersReducer from './reducers/stocksReducer'
 //import { configureStore } from '@reduxjs/toolkit';
 import { createStore } from 'redux'
 import {userSelector} from 'react-redux'
+import { BrowserRouter } from 'react-router-dom'
  
 const store = createStore(tickersReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 export {store};
+
 
 // if (process.env.NODE_ENV === 'production') {
 //   console.log = () => {}
@@ -18,9 +20,11 @@ export {store};
 
 ReactDOM.render(  
   <React.StrictMode>
-    <Provider store = {store}>
-    <App />
-    </Provider>
+    <BrowserRouter>
+      <Provider store = {store}>
+      <App />
+      </Provider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
