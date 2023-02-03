@@ -11,6 +11,7 @@ function TickerList(props){
     const dispatch = useDispatch();
     const [isLoading, setIsLoading] = useState(true);
     
+    
     const tickersFromStore = useSelector((state) => {
         const ids = state.tickers.map(ticker => ticker.id);
         return ids;

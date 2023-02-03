@@ -2,18 +2,12 @@
 import {React, useContext} from 'react'
 import { Totalvalue  } from '../Totalvalue/Totalvalue';
 import { PriceChangeToday, ChangePercentToday } from '../ChangeToday/ChangeToday'
-import { UserContext } from '../../utils/userContext';
 import TopGainers from '../Gainers/Gainers';
 
 import "./Infobar.css"
 
-// uuteen layouttiin:
-// %-osuudet horisontaalisena palkkina
-// day low-high kynttil' vertikaaliseen
-// top-3 listat?
-
 function Infobar(props) {
-  const user = useContext(UserContext)
+
 
   return (
        <table className="gainersTable" style={{width: '50%'}}> 
