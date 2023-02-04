@@ -1,0 +1,80 @@
+.SignUpPage{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.arrowDiv{
+    display: flex;
+    width: 100%;
+    justify-content: left;
+    font-size: 40px;
+    align-items: center;
+}
+
+.arrowDiv > span:hover{
+    cursor: pointer;
+}
+/* 
+.SignUpPage > form{
+    border: white thin solid;
+    padding: 25px 100px 50px 100px;
+    border-radius: 25px;
+} */
+
+.formWrapper{
+    border: white thin solid;
+    padding: 25px 100px 50px 100px;
+    border-radius: 25px;
+
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.formWrapper > h1{
+    border-bottom: solid thin white;
+    width: 100%;
+    padding: 5px;
+}
+
+.signUpRow{
+    display: flex;
+    flex-direction: column;
+}
+
+.signUpRow > p {
+    margin-bottom: 4px;
+}
+
+.signUpRow > input{
+    height: 1.4rem;
+    width: 15rem;
+    background-color: rgb(8, 3, 77);
+    color:white;
+}
+
+.signUpButton{
+    background-color: rgb(8, 3, 77);
+    border: thin solid white;
+    color: white;
+    height: 3rem;
+    border-radius: 5px;
+    width: 10rem;
+    font-weight: bold;
+
+    margin-top: 25px;
+}
+
+.signUpButton:hover{
+    cursor: pointer;
+    background-color: rgb(28, 20, 134);
+}
+
+.signUpButton:active{
+    transform: translateY(4px);
+}

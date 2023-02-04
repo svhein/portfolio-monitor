@@ -4,7 +4,7 @@ import {auth, googleProvider, database} from "../../utils/firebase-config.js"
 import {signInWithPopup, signInWithRedirect, signOut} from 'firebase/auth'
 import {ref, set, child, get} from "firebase/database";
 import { useDispatch, useSelector } from 'react-redux'
-import { UserContext } from '../../utils/userContext';
+// import { UserContext } from '../../utils/AuthContext';
 
 export function Login(props) {
 
@@ -67,7 +67,6 @@ export function Login(props) {
 }
 
 export function Logout(props){
-    const user = useContext(UserContext);
     const dispatch = useDispatch();
     
     async function signUserOut(){
@@ -76,12 +75,11 @@ export function Logout(props){
         .then(dispatch({type: 'USER_LOGOUT'}))
         .then(() => console.log('Logout succesful'))
         .catch(e => console.log('Error on logout', e))
-    console.log(user)
     }
 
-    return (
-            <p className = 'logout'>
-                Logged in as {user.displayName}{'  '} <button className = 'logout_button' onClick={async() => signUserOut()}>Sign Out</button>
-            </p> 
-    )
+    // return (
+    //         <p className = 'logout'>
+    //             Logged in as {user.displayName}{'  '} <button className = 'logout_button' onClick={async() => signUserOut()}>Sign Out</button>
+    //         </p> 
+    // )
 }

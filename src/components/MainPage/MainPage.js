@@ -17,14 +17,16 @@ import { onAuthStateChanged} from "firebase/auth";
 import {ref, child, get} from "firebase/database";
 import {TopGainersPercent, BottomGainersPercent, TopGainersPortfolio, BottomGainersPortfolio} from '../Gainers/Gainers';
 import Marquee from '../Marquee/Marquee';
-import {Route, Routes} from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from '../../utils/AuthContext';
 
 
 function MainPage(props) {
 
 //   const [user, setUser] = useState(null);
-    const { user, GoogleLoginButton, LogoutButton } = useAuth();
+  const { user, GoogleLoginButton, LogoutButton } = useAuth();
+  const navigate = useNavigate();
+
 
   const storeData = useSelector((store) => store.tickers)
   const storeInitialized = useSelector((store) => store.IsInitialized)
@@ -67,6 +69,14 @@ function MainPage(props) {
     })
   },[])
 
+  function LoginButton(){
+    return (
+      <button className="logout_button" style={{borderColor: "white"}} onClick={() => {navigate("/login")}}>
+                Login</button>
+    )
+  }
+  
+
 
   if (storeInitialized){
     return (
@@ -86,7 +96,10 @@ function MainPage(props) {
             </div>
             <div className='loginRow'>
               {/* {user ? <Logout className = 'logout' logOutClick={logOutClick}/> : <Login />} */}
-              { user ? LogoutButton() : GoogleLoginButton() }
+              { user ? LogoutButton() : LoginButton() }
+              {/* <Link to="/login">
+                <button className="logout_button" style={{borderColor: "white"}}>Login</button>
+              </Link> */}
             </div>
           </div>
     

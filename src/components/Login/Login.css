@@ -1,13 +1,11 @@
 .login_button{
-    background-color: rgb(1, 0, 17);
-    color: white;
+    background-color: rgb(8, 3, 77);
     border: thin solid white;
-
-    height: 2rem;
+    color: white;
+    height: 3rem;
     border-radius: 5px;
     width: 5rem;
-    
-    /* margin: auto; */
+    font-weight: bold;
 }
 
 .login_button:hover{
@@ -18,7 +16,7 @@
 .logout_button{
     background-color: rgb(1, 0, 17);
     color: white;
-    border: thin solid rgb(1, 0, 17);;
+    border: thin solid rgb(1, 0, 17);
 
     height: 2rem;
     border-radius: 5px;

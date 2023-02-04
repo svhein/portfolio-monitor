@@ -1,0 +1,69 @@
+.loginPage{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.loginRow{
+    display: flex;
+    flex-direction: column;
+}
+
+.loginRow > p {
+    margin-bottom: 4px;
+}
+
+.loginRow > input{
+    height: 1.4rem;
+    width: 15rem;
+    background-color: rgb(8, 3, 77);
+    color:white;
+}
+
+.loginButton{
+    background-color: rgb(8, 3, 77);
+    border: thin solid white;
+    color: white;
+    height: 3rem;
+    border-radius: 5px;
+    width: 10rem;
+    font-weight: bold;
+
+    margin-top: 30px;
+}
+
+.loginButton:hover{
+    cursor: pointer;
+    background-color: rgb(28, 20, 134);
+}
+
+.loginButton:active{
+    transform: translateY(4px);
+}
+
+.toSignUpButton, .googleButton{
+    background-color: rgb(8, 3, 77);
+    border: thin solid white;
+    color: white;
+    height: 3rem;
+    border-radius: 5px;
+    width: 10rem;
+    font-weight: bold;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.loginButton:hover, .toSignUpButton:hover, .googleButton:hover{
+    cursor: pointer;
+    background-color: rgb(28, 20, 134);
+}
+
+.loginButton:hover, .toSignUpButton:hover, .googleButton:hover{
+    transform: translateY(4px);
+}
+
+
