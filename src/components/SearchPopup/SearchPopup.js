@@ -6,6 +6,7 @@ import SearchResult from './SearchResult/SearchResult'
 function SearchPopup(props){
 
   const [searchResults, setSearchResults] = useState([]);
+  const [manualInput, setManualInput] = useState("");
   
   function handleInputChange(event){
     const searchWord = event.target.value;
@@ -16,9 +17,12 @@ function SearchPopup(props){
       .then(response => {setSearchResults(response)})
       console.log(searchResults)
     }
-  
   }
 
+  function handleManualInput(){
+    props.addTicker(manualInput.toUpperCase());
+    setManualInput("");
+  }
   // useEffect(() => {
   //   inputRef.current.focus();
   // }, [])
@@ -38,6 +42,11 @@ function SearchPopup(props){
               <div className = 'searchBar'>
                   <input className='searchInput' type='text' placeholder='Search Ticker' onChange={handleInputChange}/>
                   <div className='searchIcon'></div>
+              </div>
+              <div className="manualDiv">
+                <label>Add manually</label>
+                <input className="manualInput" type="text" value={manualInput} placeholder='Trading Symbol' onChange={(e) => setManualInput(e.target.value)}></input>
+                <button className='manualAddButton' onClick={handleManualInput}>Add</button>
               </div>
               <div className = 'results'>
                 <ul>

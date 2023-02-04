@@ -77,3 +77,33 @@
 .searchInput::placeholder{
     color: white;
 }
+
+.manualDiv * {
+  margin-left: 5px;
+  margin-top: 5px;
+}
+
+.manualInput{
+  background-color: rgb(2, 2, 48);
+  color:white;
+  border-radius: 5px;
+  border: solid thin white;
+}
+
+.manualAddButton{
+  background-color: rgb(2, 2, 48);
+  color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+.manualAddButton:hover{
+  cursor: pointer;
+  background-color: rgb(28, 20, 134);
+}
+
+.questionMark{
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+}
