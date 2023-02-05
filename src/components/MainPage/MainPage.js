@@ -3,7 +3,7 @@ import React , { useState, useEffect } from 'react';
 import './MainPage.css';
 import TickerList from '../TickerList/TickerList.js'
 import Totalvalue from '../Totalvalue/Totalvalue.js'
-import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
+import { Loading_Oval } from '../LoadingSpinner/LoadingSpinner';
 import Currencies from '../Currencies/Currencies';
 import Infobar from '../Infobar/Infobar';
 import Trade from '../TradeForms/Trade'
@@ -11,7 +11,6 @@ import ActiveTrades from '../ActiveTrades/ActiveTrades';
 import {Login, Logout} from '../Login/Login';
 import PieChart from '../PieChart/PieChart';
 import { useSelector, useDispatch } from 'react-redux'
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import { auth, database } from "../../utils/firebase-config.js";
 import { onAuthStateChanged} from "firebase/auth";
 import {ref, child, get} from "firebase/database";
@@ -109,7 +108,7 @@ function MainPage(props) {
   else{
     return (
       <div className='loading_spinner_container' style={{margin: "auto"}}>
-        <LoadingSpinner id='page_load' style={{alignItems: "center"}}/>
+        <Loading_Oval id='page_load' style={{alignItems: "center"}}/>
       </div>
     )
   }

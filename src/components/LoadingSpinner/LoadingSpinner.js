@@ -1,8 +1,9 @@
 import React from 'react';
 import './LoadingSpinner.css'
-import { Oval, ThreeCircles } from  'react-loader-spinner'
+import { Oval, ThreeCircles, RotatingLines, ColorRing } from  'react-loader-spinner';
+//  import Loader from 'react-loader-spinner'
 
-function LoadingSpinner(props){
+export function Loading_Oval(props){
 
     return (
         <ThreeCircles
@@ -18,16 +19,31 @@ function LoadingSpinner(props){
             middleCircleColor="#ff0303"
         />
         )
-
-    // return(
-    //         <Oval
-    //             height="50"
-    //             width="50"
-    //             color='red'
-    //             ariaLabel='loading'
-    //             wrapperClassName = 'ovalWrapper'
-    //         />
-    // ) 
 }
 
-export default LoadingSpinner;
+export function Loading_RotatingLines(){
+    return (
+        <RotatingLines
+    strokeColor="#fcfcfc"
+    strokeWidth="5"
+    animationDuration="0.75"
+    width="20"
+    visible={true}
+    />
+    )
+}
+
+export function ColorRing_Loader(){
+    return(
+        <ColorRing
+        visible={true}
+        height="20"
+        width="20"
+        ariaLabel="blocks-loading"
+        wrapperStyle={{}}
+        wrapperClass="blocks-wrapper"
+        colors={['1cd922', '#ff0303']}
+        />
+    )
+}
+

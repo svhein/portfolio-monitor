@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import './Ticker.css'
 import {useDispatch, useSelector} from 'react-redux';
-import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import CurrencyDropdown from '../CurrencyDropdown/CurrencyDropdown';
 import YahooWebSocket from '../../utils/YahooWebSocket';
 import proto from '../../utils/YPricingData.proto';
 import axios from 'axios';
 import { UpdateDatabase } from '../../utils/updateDatabase';
+import { Loading_RotatingLines,ColorRing_Loader } from '../LoadingSpinner/LoadingSpinner';
 const protobuf = require("protobufjs");
 const { Buffer } = require('buffer/');
+
 
 function TickerNew(props){
 
@@ -47,12 +48,14 @@ function TickerNew(props){
         UpdateDatabase()
     }, [currency])
 
+    // fetch price and changepercent from api
     useEffect(() => {
         console.log(props.type)
         axios.get(`https://portfolioserver-rqvj6ywtea-lz.a.run.app/${props.name}`).then((result) => {
             setPrice(result.data[0])
             setChangePercent(parseFloat(result.data[1]).toFixed(2))
             console.log('changePercent set to ' + changePercent)
+            setIsLoading(false);
         })
         .catch(e => console.log('Fetching price failed: ', e))
     }, [])
@@ -132,24 +135,22 @@ function TickerNew(props){
     if (props.type == 'tableItem'){
         return(
             <tr>
+                <td id='color_code'>
+                    <div className='ball'></div>
+                </td>
                 {/* NAME */}
-                <td id='sticky_column'>    {props.name}   </td>
+                <td id='sticky_column'>  <span style={{color: 'red'}}>&#8226;</span> {"     "}   {props.name}   </td>
     
                 {/* PRICE */}
-                <td style={{color: priceColor}}> {price} </td>
-    
+                <td style={{color: priceColor}}> {isLoading ? <Loading_RotatingLines/> : price} </td>
+     
                 {/* CURRENCY */}
                 {window.innerWidth > 600 ? <td>    <CurrencyDropdown ticker={props.name} currency={currency} />   </td> : null}
     
                 {/* CHANGEPERCENT */}
-                <td style={{color: percentColor}}> {changePercent} % </td>
-    
-                {/* AMOUNT */}
-                {/* <td id='amount' contenteditable="true" onKeyUp={handleAmountChange}>
-                        {amount}
-                        
-                </td>      */}
+                <td style={{color: percentColor}}> {isLoading ? <Loading_RotatingLines/> : changePercent + " %"}</td>
 
+                {/* AMOUNT */}
                 <td id='amount'>
                     <input id='amount' onChange={handleAmountChange} value={amount}></input>
                 </td>

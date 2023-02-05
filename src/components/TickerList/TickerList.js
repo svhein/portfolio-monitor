@@ -4,7 +4,7 @@ import './TickerList.css'
 import Ticker from '../Ticker/Ticker'
 import SearchPopup from '../SearchPopup/SearchPopup';
 import { UpdateDatabase } from '../../utils/updateDatabase';
-import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
+import { Loading_Oval } from '../LoadingSpinner/LoadingSpinner';
 
 function TickerList(props){
 
@@ -49,6 +49,7 @@ function TickerList(props){
             <table className='TickerList'>
                 <thead className='tickerListHeader'>
                     <tr>
+                        <th id='color_code'></th>
                         <th id='sticky_column' style={{zIndex: 10, background: "rgb(8, 3, 77)", paddingLeft:"10px"}}>Name</th>
                         <th>Price</th>
                         {window.innerWidth > 600 ? <th>Curr</th> : null}
@@ -62,7 +63,7 @@ function TickerList(props){
                     {/* render tickers */}
                     {/* {tickersFromStore?.map((ticker) => <Ticker type='tableItem' key={ticker} name={ticker} removeTicker={removeTicker}/>)}  */}
                     {tickersFromStore.length > 0 ? tickersFromStore?.map((ticker) => <Ticker type='tableItem' key={ticker} name={ticker} removeTicker={removeTicker}/>) 
-                        : <LoadingSpinner></LoadingSpinner>}
+                        : < Loading_Oval></ Loading_Oval>}
                         
                     <tr>
                         <td id='addButtonRow' colSpan="7">

@@ -98,6 +98,10 @@ td{
   background-color:rgb(8, 3, 77);
 }
 
+#color_code{
+  width: 2rem;
+}
+
 @media only screen and (max-width: 604px) {
   .TickerList {
     width: 100vw;
