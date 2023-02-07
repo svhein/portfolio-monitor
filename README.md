@@ -7,7 +7,7 @@ App is being build by React, Redux, Node and Firebase.
 
 - Real time stock data with websocket connection to Yahoo Finance server
 - Allows users to add and delete stocks to his portfolio
-- Saves users portfolio automatically to his Google account
+- User can create account and his portfolio is saved automically
 - Mobile friendly
  
  See also [portfolio-monitor-server](https://github.com/svhein/portfolio-monitor-server) reposity
