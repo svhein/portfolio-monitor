@@ -25,7 +25,7 @@ function TopGainersPercent(props){
                         {ticker.id}
                     </td>
                     <td style={{color: color}}>
-                        {ticker.changePercent}
+                        {ticker.changePercent + "%"}
                     </td>
                 </tr>
             )
@@ -62,7 +62,7 @@ function BottomGainersPercent(props){
                         {ticker.id}
                     </td>
                     <td style={{color: color}}>
-                        {ticker.changePercent}
+                        {ticker.changePercent + "%"} 
                     </td>
                 </tr>
             )
