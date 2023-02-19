@@ -55,7 +55,13 @@ function TickerNew(props){
             setPrice(result.data[0])
             setChangePercent(parseFloat(result.data[1]).toFixed(2))
             console.log('changePercent set to ' + changePercent)
+            dispatch({ type: 'UPDATE',
+                            id: props.name,
+                            price: result.data[0],
+                            changePercent: (result.data[1]).toFixed(2)
+                            });
             setIsLoading(false);
+
         })
         .catch(e => console.log('Fetching price failed: ', e))
     }, [])
@@ -135,11 +141,11 @@ function TickerNew(props){
     if (props.type == 'tableItem'){
         return(
             <tr>
-                <td id='color_code'>
+                {/* <td id='color_code'>
                     <div className='ball'></div>
-                </td>
+                </td> */}
                 {/* NAME */}
-                <td id='sticky_column'>  <span style={{color: 'red'}}>&#8226;</span> {"     "}   {props.name}   </td>
+                <td id='sticky_column'> {props.name}   </td>
     
                 {/* PRICE */}
                 <td style={{color: priceColor}}> {isLoading ? <Loading_RotatingLines/> : price} </td>
